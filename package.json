@@ -1,0 +1,53 @@
+{
+  "name": "hack_dep",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "cross-env PORT=10888 react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "vk-miniapps-deploy",
+    "clean-source": "rimraf README.md src webroot package.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "react-hot-loader": "^4.9.0",
+    "react-scripts": "^3.1.2"
+  },
+  "dependencies": {
+    "@vkontakte/icons": "^1.10.0",
+    "@vkontakte/vk-connect": "^1.6.11",
+    "@vkontakte/vkui": "^2.30.7",
+    "babel-eslint": "^10.0.3",
+    "chalk": "^2.4.2",
+    "core-js": "^3.1.4",
+    "create-react-class": "^15.6.3",
+    "dictaphone-js": "^0.2.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-audio-analyser": "^0.2.6",
+    "react-audio-recorder": "^2.2.0",
+    "react-dom": "^16.9.0",
+    "react-recorder": "^1.0.0",
+    "web-audio-recorder-js": "0.0.2",
+    "web-audio-wave-recorder": "^1.0.15"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+
+  
+}
