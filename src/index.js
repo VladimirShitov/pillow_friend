@@ -144,6 +144,7 @@ var WaveRecorder = (function (exports) {
   const stop = document.getElementById('stop')
   const play = document.getElementById('play_pause')
   const download = document.getElementById('rew')
+  const send = document.getElementById('ff')
   
   let blob
   let recordingState
@@ -174,31 +175,45 @@ var WaveRecorder = (function (exports) {
 	  return
 	}
 
-	var formdata = new FormData();
-	formdata.append('soundBlob', blob, 'filetosave.wav')
-	var serverUrl = '';
-
-	var xhr = new XMLHttpRequest();
-	xhr.open('POST', serverUrl, true);
 	
-	xhr.setRequestHeader('enctype', 'multipart/form-data');
-
-	xhr.onreadystatechange = function() {//Call a function when the state changes.
-    if(xhr.readyState == 4 && xhr.status == 200) {
-        alert(xhr.responseText);
-	}
-	xhr.send(formdata);
-}
-
 
 	const url = URL.createObjectURL(blob)
+	console.log(url);
 	const anchor = document.createElement('a')
 	document.body.appendChild(anchor)
 	anchor.href = url
+	
 	anchor.download = `${Date.now()}.wav`
 	anchor.click()
 	window.URL.revokeObjectURL(url)
   })
+
+  send.addEventListener('click', () => {
+	if (!blob) {
+	  return
+	}
+	var formdata = new FormData();
+	formdata.append('soundBlob', blob, 'filetosave.wav')
+	var serverUrl = 'http://95.183.8.189:5000/upload';
+
+	console.log(123);
+
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', serverUrl, true);
+	
+	xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+
+	xhr.onreadystatechange = function() {//Call a function when the state changes.
+    if(xhr.readyState === 4 && xhr.status === 200) {
+        alert(xhr.responseText);
+	}}
+	xhr.onerror = function() {
+		console.log('error'+this.status);
+	}
+	xhr.send(formdata);
+	
+  })
+
 
 // Если вы хотите, чтобы ваше веб-приложение работало в оффлайне и загружалось быстрее,
 // расскомментируйте строку с registerServiceWorker();
