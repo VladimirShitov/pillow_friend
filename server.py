@@ -314,6 +314,8 @@ def return_wordcloud():
     y = (np.iinfo(np.int32).max * (audio/np.abs(audio).max())).astype(np.int32)
     wavfile.write(os.path.join(basedir, app.config['UPLOAD_FOLDER'], 'speech_2.wav'), rate = rate, data = y)
 
+#    with sr.AudioFile(os.path.join(basedir, app.config['UPLOAD_FOLDER', 'speech_2.wav') as source:
+
     with sr.AudioFile(os.path.join(basedir, app.config['UPLOAD_FOLDER'], 'saved_file.wav')) as source:
         audio = r.record(source)
 
